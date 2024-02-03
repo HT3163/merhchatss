@@ -17,7 +17,8 @@ app.use('/users', userRoutes)
 require('./connection')
 
 const server = require('http').createServer(app);
-const PORT = 5001;
+// const PORT = 5001;
+const PORT = process.env.PORT || 5001
 
 // help us to get data from frontend
 const io = require('socket.io')(server, {
