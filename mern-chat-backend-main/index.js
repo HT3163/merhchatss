@@ -11,7 +11,13 @@ const fs = require('fs');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(cors());
+const corsConfig = {
+  origin: "*",
+  credential: true,
+  methods: ["GET","POST", "PUT", "DELETE"]
+}
+app.options("",cors(corsConfig))
+app.use(cors(corsConfig));
 
 app.use('/users', userRoutes)
 require('./connection')
